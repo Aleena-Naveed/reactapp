@@ -8,11 +8,11 @@ export default function Upload() {
     const [description, setDescription] = React.useState('');
     const [title, setTitle] = React.useState('');
     const [file, setFile] = React.useState('')
-    
+
 
     const fileUpload = (event) => {
-        const afile = event.target.files[0]
-        setFile(afile)
+        const upfile = event.target.files[0]
+        setFile(upfile)
         setfileName(file.name)
         console.log(file)
     }
@@ -20,7 +20,7 @@ export default function Upload() {
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData();
-        data.append('file',file)
+        data.append('file', file)
         data.append('description', description);
         data.append('title', title);
 
@@ -42,8 +42,8 @@ export default function Upload() {
             <input type="text" value={title} onChange={e => setTitle(e.target.value)} />
             <p>Add Content Description:</p>
             <input type="text" value={description} onChange={e => setDescription(e.target.value)} />
-            <br></br>    
-            <input type="submit" onChange={handleSubmit} />
+            <br></br>
+            <input type="submit" onClick={e => handleSubmit(e)} />
         </div>
     )
 }
